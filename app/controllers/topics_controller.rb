@@ -12,6 +12,10 @@ class TopicsController < ApplicationController
   def edit
   end
 
+  def confirm
+    @topic = Topic.new(topics_params)
+  end
+
   def update
     if @topic.update(topics_params)
       redirect_to topics_path, notice: "トピックを更新しました！"
