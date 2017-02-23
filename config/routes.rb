@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'topic/index'
+   resources :topics, only: [:index, :new, :create, :edit, :update, :destroy]
 
-  get 'topic/create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
