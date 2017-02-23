@@ -3,6 +3,8 @@
 <% @topics.each do |topic| %>
   <p>タイトル:<%= topic.title %></p>
   <p>本文:<%= topic.content %></p>
+  <%= link_to "編集", edit_topic_path(topic.id) %>
+  <hr>
 <% end %>
-
+<br><br>
 <%= link_to "トピックを作成する", new_topic_path %>
