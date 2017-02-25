@@ -6,7 +6,11 @@ class TopicsController < ApplicationController
   end
 
   def new
-    @topic = Topic.new
+    if params[:back]
+      @topic = Topic.new(topics_params)
+    else
+      @topic = Topic.new
+    end
   end
 
   def edit
@@ -14,6 +18,7 @@ class TopicsController < ApplicationController
 
   def confirm
     @topic = Topic.new(topics_params)
+    render :new if @topic.invalid?
   end
 
   def update

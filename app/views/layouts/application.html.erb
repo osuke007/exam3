@@ -7,8 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    課題３
+    <ul>
+      <li><a href="#">課題３</a></li>
+      <li><a href="#">トップページ</a></li>
+      <li><a href="#">トピック</a></li>
+    </ul>
+
+    <% if user_signed_in? %>
+      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+    <% else %>
+      <li><%= link_to 'ログイン', new_user_session_path  %></li>
+      <li><%= link_to 'サインアップ', new_user_registration_path %></li>
+    <% end %>
+  </header>
 
 <%= yield %>
+
+  <footer>
+    <p>© 2016 Copyright DIVE INTO CODE Corp.</p>
+  </footer>
 
 </body>
 </html>
