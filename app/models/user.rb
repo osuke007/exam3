@@ -57,5 +57,7 @@ class User < ActiveRecord::Base
   end
 
   has_many :topics
+  has_many :topics, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
 end

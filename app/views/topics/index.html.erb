@@ -4,11 +4,13 @@
 
 <% @topics.each do |topic| %>
 
-<%= User.find(topic.user_id).name %><br>
-<%= topic.created_at.strftime("%m/%d/%y at %l:%M %p") %>
+  <%= User.find(topic.user_id).name %><br>
+  <%= topic.created_at.strftime("%m/%d/%y at %l:%M %p") %>
 
-  <p>タイトル:<%= topic.title %></p>
-  <p>本文:<%= topic.content %></p>
+  <%= link_to topic_path(topic) do %>
+    <h4><strong><%= topic.title %></strong></h4>
+  <% end %>
+  <p><%= topic.content %></p>
   <%= link_to "編集", edit_topic_path(topic.id), data: { confirm: '本当に編集していいですか？' } %>
   <%= link_to '削除', topic_path(topic.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %>
   <hr>
