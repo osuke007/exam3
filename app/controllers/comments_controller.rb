@@ -6,11 +6,16 @@ class CommentsController < ApplicationController
     @topic = @comment.topic
 
     # クライアント要求に応じてフォーマットを変更
+    # respond_toは、クライアントからの要求に応じてレスポンスのフォーマットを変更します。
     respond_to do |format|
       if @comment.save
         format.html { redirect_to topic_path(@topic), notice: 'コメントを投稿しました。' }
+        format.json { render :show, status: :created, location: @comment }
+        # JS形式でレスポンスを返します。
+        format.js { render :index }
       else
         format.html { render :new }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
