@@ -3,6 +3,10 @@
 <h1>トピック一覧</h1>
 
 <% @topics.each do |topic| %>
+
+<%= User.find(topic.user_id).name %><br>
+<%= topic.created_at.strftime("%m/%d/%y at %l:%M %p") %>
+
   <p>タイトル:<%= topic.title %></p>
   <p>本文:<%= topic.content %></p>
   <%= link_to "編集", edit_topic_path(topic.id), data: { confirm: '本当に編集していいですか？' } %>

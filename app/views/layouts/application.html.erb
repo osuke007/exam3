@@ -10,11 +10,10 @@
   <header>
     課題３
     <ul>
-      <li><a href="#">課題３</a></li>
-      <li><a href="#">トップページ</a></li>
-      <li><a href="#">トピック</a></li>
+      <li><%= link_to 'トップ', root_path %></li>
+      <li><%= link_to 'トピック', topics_path %></li>
       <li><%= link_to 'プロフィール', edit_user_registration_path %></li>
-      
+
     </ul>
 
     <% if user_signed_in? %>
