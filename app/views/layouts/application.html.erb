@@ -1,35 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-  <title>Exam3</title>
+  <title>大課題３</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <header>
-    課題３
-    <ul>
-      <li><%= link_to 'トップ', root_path %></li>
-      <li><%= link_to 'トピック', topics_path %></li>
-
-    </ul>
+    <nav class="navbar navbar-default">
+      <!-- ヘッダ情報 -->
+      <div class="navbar-header">
+        <% if signed_in? %>
+          <%= link_to image_tag('logo.png', { :height => 50,:alt => 'ロゴ', :class=>'logo-nav'}), topics_url %>
+        <% else %>
+          <%= image_tag('logo.png', { :height => 50,:alt => 'ロゴ', :class=>'logo-nav'}) %>
+        <% end %>
+      </div>
 
     <% if user_signed_in? %>
-      <li><%= link_to 'プロフィール', edit_user_registration_path %></li>
-      <li><%= link_to 'ユーザー一覧', users_path %></li>
-      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-    <% else %>
-      <li><%= link_to 'ログイン', new_user_session_path  %></li>
-      <li><%= link_to 'サインアップ', new_user_registration_path %></li>
+      <div class="container">
+        <!-- リストの配置 -->
+
+
+        <div id="gnavi" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to 'ホーム', topics_path %></li>
+          <li><%= link_to 'プロフィール', edit_user_registration_path %></li>
+          <li><%= link_to 'ユーザー一覧', users_path %></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </div>
+      </div>
     <% end %>
+    </nav>
+      <p class="flash"><%= notice %><%= alert %></p>
+
   </header>
 
 <%= yield %>
 
-  <footer>
-    <p>© 2016 Copyright DIVE INTO CODE Corp.</p>
-  </footer>
-
+<footer>
+  <div class="container">
+    <div class="row">
+      © 2017 ふぇいすぶっく
+    </div>
+  </div>
+</footer>
 </body>
 </html>

@@ -1,18 +1,28 @@
 <div class="container">
-  <h2>ユーザー</h2>
-  <% @users.each do |user| %>
-    <% if current_user.id != user.id %>
-      <div class="container-child col-md-2 col-sm-4 col-xs-6 ">
-        <%= profile_img(user) %><br>
-        <%= user.email %><br>
-        <%= user.name %><br>
-        <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%><br>
-        <%= render partial: 'follow_form', locals: { user: user } if signed_in?   %>
+  <div class="row">
+    <div class="C col-xs-3">
+      Newsfeed<br>
+      Event<br>
+      Group<br>
+    </div>
+    <div class="col-lg-6 col-xs-6 ">
+      <div class="row">
+        <h2>ユーザー 一覧</h2>
         <hr>
+        <% @users.each do |user| %>
+        <div class="col-sm-4 col-xs-12">
+          <div class="profile">
+            <% if current_user.id != user.id %>
+            <%= profile_img(user)%><br>
+            <%= user.name %><br>
+            <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+            <%= render partial: 'follow_form' , locals: { user: user } if signed_in? %>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
       </div>
-    <% end %>
-  <% end %>
-
-
-
+    </div>
+    <div class="col-lg-3 col-xs-3"></div>
+  </div>
 </div>

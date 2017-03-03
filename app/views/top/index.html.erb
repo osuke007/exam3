@@ -1,3 +1,16 @@
-<p><%= notice %></p>
-
-<h1>トップ</h1>
+<div class="main-menu">
+  <div class="container">
+    <div class="form row">
+      <div class="hidden-xs col-sm-6"><%= image_tag('top-image.png')%></div>
+      <div class="col-xs-12 col-sm-6" >
+        ふぇいすぶっく
+        <br>
+        <%= link_to image_tag('fb_login.png', { :height => 50,:alt => 'ロゴ'}), user_facebook_omniauth_authorize_path %>
+        <br><br>
+        <%= link_to image_tag('tw_login.png', { :height => 50,:alt => 'ロゴ'}), user_twitter_omniauth_authorize_path %>
+        <br><br>
+        <%= link_to image_tag('ml_login.png', { :height => 50,:alt => 'ロゴ'}), user_session_path %>
+      </div>
+    </div>
+  </div>
+</div>
