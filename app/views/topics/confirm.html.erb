@@ -1,31 +1,27 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-3 col-xs-3">
-      Newsfeed<br>
-      Event<br>
-      Group<br>
+    <div class="row">
+        <div class="col-sm-3 col-xs-3">
+            Newsfeed<br>
+            Event<br>
+            Group<br>
+        </div>
+        <div class="col-sm-6 col-xs-6">
+            <%= form_for(@topic) do |f| %>
+            <div class="form">
+                <%= f.hidden_field :title %>
+                <%= f.hidden_field :content %>
+                <p>タイトル:<%= @topic.title %></p>
+                <p>本文:<%= @topic.content %></p>
+            </div>
+            <%= f.submit "投稿する", class: "btn btn-primary"  %>
+            <% end %>
+            <br>
+            <%= form_for(@topic, url: new_topic_path, method: 'get') do |f| %>
+            <%= f.hidden_field :title %>
+            <%= f.hidden_field :content %>
+            <%= f.submit "もどる", name: 'back' , class: "btn btn-default"%>
+            <% end %>
+        </div>
+        <div class="col-sm-3 col-xs-3"></div>
     </div>
-
-    <div class="col-sm-6 col-xs-6">
-      <div class="form">
-        <%= form_for(@topic) do |f| %>
-          <%= f.hidden_field :title %>
-          <%= f.hidden_field :content %>
-          <p>タイトル:<%= @topic.title %></p>
-          <p>本文:<%= @topic.content %></p>
-          <%= f.submit "投稿する", class: "btn btn-primary"  %>
-        <% end %>
-<br>
-        <%= form_for(@topic, url: new_topic_path, method: 'get') do |f| %>
-          <%= f.hidden_field :title %>
-          <%= f.hidden_field :content %>
-          <%= f.submit "もどる", name: 'back' , class: "btn btn-default"%>
-        <% end %>
-      </div>
-    </div>
-
-
-    <div class="col-sm-3 col-xs-3"></div>
-
-  </div>
 </div>

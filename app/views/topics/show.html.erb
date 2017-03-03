@@ -17,6 +17,7 @@
           <p class="left"><strong>内容</strong></p>
           <p class="left"><%= @topic.content %></p>
           <p class="right">
+            <%= User.find(@topic.user_id).name %><br>
             <strong>作成時間:</strong>
             <%= @topic.created_at.strftime("%y/%m/%d %p %l:%M") %><br>
             <% if current_user.id == @topic.user_id %>
